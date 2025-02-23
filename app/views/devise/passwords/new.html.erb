@@ -1,0 +1,36 @@
+<div class="flex justify-center items-center w-full">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-96 border border-gray-200">
+    
+    <!-- Header -->
+    <h2 class="text-2xl font-semibold text-gray-800 text-center mb-4">
+      Forgot your password?
+    </h2>
+    <p class="text-sm text-gray-600 text-center mb-6">
+      Enter your email and we'll send you reset instructions.
+    </p>
+
+    <!-- Form -->
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: "space-y-4") do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <!-- Email Field -->
+      <div class="flex flex-col">
+        <%= f.label :email, class: "text-gray-700 font-medium" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", 
+          class: "mt-1 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="mt-3 mb-2">
+        <%= f.submit "Send Reset Instructions", 
+          class: "w-full bg-blue-500 me-2 hover:bg-blue-600 text-white font-semibold py-2 rounded-lg transition duration-300" %>
+      </div>
+    <% end %>
+
+    <!-- Links -->
+    <div class="flex justify-center items-center mt-4 gap-2">
+      <%= render "devise/shared/links" %>
+    </div>
+
+  </div>
+</div>

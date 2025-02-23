@@ -1,0 +1,15 @@
+<div class="flex flex-col items-center justify-center  w-full p-4">
+  <h1 class="text-3xl font-bold lily text-orange-600 mb-8">Shorten a URL</h1>
+
+  <%= form_with model: @link, class: "w-full max-w-md bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4" do |form| %>
+    <div class="mb-6">
+      <%= form.label :original_url, "Enter your URL:", class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.text_field :original_url, class: "shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent", placeholder: "https://example.com" %>
+    </div>
+
+    <div class="flex items-center justify-between">
+      <%= form.submit "Shorten", class: "bg-blue-500 hover:bg-blue-700 me-2 text-white font-bold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" %>
+      <%= link_to "All link",links_path%>
+</div>
+  <% end %>
+</div>

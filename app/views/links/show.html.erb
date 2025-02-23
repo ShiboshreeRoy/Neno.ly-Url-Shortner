@@ -1,0 +1,52 @@
+<div class="flex flex-col items-center justify-centerw-full p-6">
+  <div class="w-full max-w-2xl bg-white shadow-lg rounded-lg p-8">
+    <h1 class="text-3xl font-bold lily text-gray-800 mb-6">Link Details</h1>
+
+    <div class="space-y-4">
+      <!-- Original URL -->
+      <div>
+        <strong class="block text-sm font-medium text-gray-700">Original URL:</strong>
+        <a href="<%= @link.original_url %>" target="_blank" class="text-blue-600 hover:text-blue-800 break-words">
+          <%= @link.original_url %>
+        </a>
+      </div>
+
+      <!-- Shortened URL -->
+      <div>
+        <strong class="block text-sm font-medium text-gray-700">Shortened URL:</strong>
+        <div class="flex items-center gap-2">
+          <a href="<%= short_url(@link.short_code) %>" target="_blank" class="text-blue-600 hover:text-blue-800 break-words">
+            <%= short_url(@link.short_code) %>
+          </a>
+          <button onclick="copyToClipboard('<%= short_url(@link.short_code) %>')" class="p-2 bg-gray-200 hover:bg-gray-300 rounded-lg">
+            📋
+          </button>
+        </div>
+      </div>
+
+      <!-- Clicks -->
+      <div>
+        <strong class="block text-sm font-medium text-gray-700">Clicks:</strong>
+        <span class="text-gray-900"><%= @link.clicks %></span>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="mt-8 flex items-center justify-between">
+      <%= link_to 'Edit', edit_link_path(@link), class: "bg-yellow-500 hover:bg-yellow-600 me-2 text-white font-bold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2" %>
+      <%= link_to 'Delete', @link, method: :delete, data: {turbo_method: :delete, confirm: 'Are you sure?' }, class: "bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-red-500 me-2 focus:ring-offset-2" %>
+      <%= link_to 'Back to Links', links_path, class: "bg-gray-500 me-2 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2" %>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript for Copy to Clipboard -->
+<script>
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Link copied to clipboard!');
+    }).catch(() => {
+      alert('Failed to copy link.');
+    });
+  }
+</script>

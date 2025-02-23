@@ -1,0 +1,58 @@
+<div class="flex flex-col items-center justify-center w-full p-6">
+  <div class="w-full max-w-6xl bg-white shadow-lg rounded-lg p-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8">Your Shortened Links</h1>
+
+    <% if @links.any? %>
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Original URL</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Shortened URL</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Clicks</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <% @links.each do |link| %>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <!-- Original URL -->
+                <td class="px-4 py-4 text-sm text-gray-700 break-words">
+                  <a href="<%= link.original_url %>" target="_blank" class="text-blue-600 hover:text-blue-800">
+                    <%= link.original_url %>
+                  </a>
+                </td>
+
+                <!-- Shortened URL -->
+                <td class="px-4 py-4 text-sm text-gray-700 break-words">
+                  <a href="<%= short_url(link.short_code) %>" target="_blank" class="text-blue-600 hover:text-blue-800">
+                    <%= short_url(link.short_code) %>
+                  </a>
+                </td>
+
+                <!-- Clicks -->
+                <td class="px-4 py-4 text-sm text-gray-700"><%= link.clicks %></td>
+
+                <!-- Actions -->
+                <td class="px-4 py-4 text-sm">
+                  <div class="flex items-center space-x-2">
+                    <%= link_to 'Show', link, class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-sm" %>
+                    <%= link_to 'Edit', edit_link_path(link), class: "bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 text-sm" %>
+                    <%= link_to 'Delete', link, method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 text-sm" %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p class="text-gray-600 text-center">You haven't created any shortened links yet.</p>
+    <% end %>
+
+    <!-- New URL Button -->
+    <div class="mt-8 text-center">
+      <%= link_to 'New URL', new_link_path, class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" %>
+    </div>
+  </div>
+</div>

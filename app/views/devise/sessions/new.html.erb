@@ -1,0 +1,56 @@
+<div class="flex justify-center items-center w-full">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-96 border border-gray-200">
+    <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Log in</h2>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "space-y-4") do |f| %>
+      
+      <!-- Email Field -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">
+          Email
+        </label>
+        <div class="relative mt-1">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m8 0H8m8 0H8m8 0H8M3 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8-8-3.582-8-8z" />
+            </svg>
+          </span>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full pl-10 pr-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" %>
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">
+          Password
+        </label>
+        <div class="relative mt-1">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m0-8v2m4 4H8m4 4v2m-4-6h8m4 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </span>
+          <%= f.password_field :password, autocomplete: "current-password", class: "w-full pl-10 pr-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" %>
+        </div>
+      </div>
+
+      <!-- Remember Me Checkbox -->
+      <% if devise_mapping.rememberable? %>
+        <div class="flex items-center mt-2 mb-2">
+          <%= f.check_box :remember_me, class: "h-4 w-4 me-2 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" %>
+          <label class="ml-2 text-sm text-gray-700">Remember me</label>
+        </div>
+      <% end %>
+
+      <!-- Submit Button -->
+      <div>
+        <%= f.submit "Log in", class: "w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md transition duration-300" %>
+      </div>
+    <% end %>
+
+    <!-- Additional Links -->
+    <div class="mt-4 text-center text-sm text-gray-600">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

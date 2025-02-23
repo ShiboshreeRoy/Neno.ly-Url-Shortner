@@ -1,0 +1,50 @@
+<div class="flex justify-center items-center mt-4 mb-2">
+  <% if user_signed_in? %>
+    <div class="bg-white p-6 rounded-lg shadow-lg w-80 border border-gray-200">
+      
+      <!-- Profile Header -->
+      <div class="flex items-center space-x-3">
+        <!-- Profile Icon -->
+        <div class="bg-green-500 text-white p-3 rounded-full">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A12.07 12.07 0 0112 15c2.6 0 5.053.832 7.121 2.804M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+        <p class="text-lg font-semibold text-gray-800">
+          <span class="text-green-500">Name:</span> <%= current_user.email.split('@').first.capitalize %>
+        </p>
+      </div>
+
+      <!-- Joined Date -->
+      <div class="flex items-center mt-3 text-gray-600">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8m4-8v8m4-8v8m2-9a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p class="text-sm">
+          <span class="text-green-500">Joined on:</span> <%= current_user.created_at.strftime("%B %d, %Y") %>
+        </p>
+      </div>
+
+      <!-- Actions -->
+      <div class="mt-5 flex flex-col space-y-3">
+        <!-- Edit Profile -->
+        <%= link_to edit_user_registration_path, class: "flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition duration-300" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536M9 11l3.536 3.536m2.121-2.121L9 8.879 4.243 13.636a2 2 0 00-.586 1.414V19h4.95a2 2 0 001.414-.586l8.121-8.121a2 2 0 000-2.828L15.232 5.232a2 2 0 00-2.828 0z" />
+          </svg>
+          Edit Profile
+        <% end %>
+
+        <!-- Sign Out -->
+        <%= link_to destroy_user_session_path, data: { turbo_method: :delete, confirm: "Are you sure?" }, 
+          class: "flex items-center justify-center bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition duration-300" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m4 4v-4m0-4V7m0 8v-4m0 4H7m8 0h-4m0-4h4" />
+          </svg>
+          Sign Out
+        <% end %>
+      </div>
+      
+    </div>
+  <% end %>
+</div>
