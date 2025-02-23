@@ -1,6 +1,6 @@
 # Neno.ly - Powerful URL Shortener
 
-![Neno.ly Banner](../nano.ly/app/assets/images/Project_image.png) <!-- Replace with your project banner image -->
+![Neno.ly Banner](./demo/Project_image.png) <!-- Replace with your project banner image -->
 
 Neno.ly is a powerful URL shortener designed to simplify sharing long web links. By converting lengthy URLs into short, easy-to-remember links, Neno.ly helps improve user experience, making it ideal for social media, messaging, and online marketing. It offers fast, reliable, and secure link shortening, making it a valuable tool for anyone looking to share links more efficiently.
 
@@ -21,7 +21,7 @@ Neno.ly is a powerful URL shortener designed to simplify sharing long web links.
 
 Check out a quick demo of Neno.ly in action:
 
-[![Neno.ly Demo Video](../nano.ly/app/assets/images/project_video.mp4)]<!-- Replace with your demo video link -->
+[![Neno.ly Demo Video](./demo/project_video.mp4)]<!-- Replace with your demo video link -->
 
 ---
 
